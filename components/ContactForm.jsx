@@ -16,11 +16,11 @@ export default function ContactForm() {
       const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
-      // Send notification to you
+      // Send notification to you (critical)
       await emailjs.sendForm(serviceId, process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, formRef.current, publicKey);
 
-      // Send auto-reply to the sender
-      await emailjs.sendForm(serviceId, "template_hilrgyg", formRef.current, publicKey);
+      // Send auto-reply to the sender (non-critical, don't block success)
+      emailjs.sendForm(serviceId, "template_hilrgyg", formRef.current, publicKey).catch(() => {});
 
       setStatus("success");
       formRef.current.reset();
