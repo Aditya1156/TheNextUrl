@@ -30,7 +30,7 @@ export default function CTA() {
                 Contact Us <HiArrowRight />
               </Link>
               <a
-                href="https://wa.me/919999999999"
+                href="https://wa.me/91885288250"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 border border-white/30 text-white

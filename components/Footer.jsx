@@ -59,14 +59,14 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-text-muted text-sm">
                 <HiMail className="text-accent-blue shrink-0" />
-                <a href="mailto:hello@thenexturl.in" className="hover:text-accent-blue transition-colors">
-                  hello@thenexturl.in
+                <a href="mailto:contact.thenexturl@gmail.com" className="hover:text-accent-blue transition-colors">
+                  contact.thenexturl@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-2 text-text-muted text-sm">
                 <HiPhone className="text-accent-blue shrink-0" />
-                <a href="tel:+919999999999" className="hover:text-accent-blue transition-colors">
-                  +91 99999 99999
+                <a href="tel:+91885288250" className="hover:text-accent-blue transition-colors">
+                  +91 88528 8250
                 </a>
               </li>
               <li className="flex items-start gap-2 text-text-muted text-sm">
