@@ -13,12 +13,15 @@ export default function ContactForm() {
     setStatus("sending");
 
     try {
-      await emailjs.sendForm(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-        formRef.current,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-      );
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+      // Send notification to you
+      await emailjs.sendForm(serviceId, process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, formRef.current, publicKey);
+
+      // Send auto-reply to the sender
+      await emailjs.sendForm(serviceId, "template_hilrgyg", formRef.current, publicKey);
+
       setStatus("success");
       formRef.current.reset();
     } catch {
