@@ -88,12 +88,12 @@ export default function Footer() {
 
           {/* Left: logo + verified label */}
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg overflow-hidden border border-gray-200 bg-white shrink-0 flex items-center justify-center p-0.5">
+            <div className="w-16 h-16 rounded-xl overflow-hidden border border-gray-200 bg-white shrink-0 flex items-center justify-center p-1">
               <Image
                 src="/msme.png"
                 alt="MSME"
-                width={32}
-                height={32}
+                width={56}
+                height={56}
                 className="w-full h-full object-contain"
               />
             </div>
