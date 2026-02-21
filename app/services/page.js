@@ -232,25 +232,6 @@ const processSteps = [
   },
 ];
 
-const techStack = [
-  { name: "Next.js", cat: "Frontend" },
-  { name: "React", cat: "Frontend" },
-  { name: "React Native", cat: "Mobile" },
-  { name: "Tailwind CSS", cat: "Frontend" },
-  { name: "Framer Motion", cat: "Frontend" },
-  { name: "Node.js", cat: "Backend" },
-  { name: "Express", cat: "Backend" },
-  { name: "Python", cat: "Backend" },
-  { name: "PostgreSQL", cat: "Database" },
-  { name: "MongoDB", cat: "Database" },
-  { name: "MySQL", cat: "Database" },
-  { name: "Firebase", cat: "Database" },
-  { name: "Vercel", cat: "Infrastructure" },
-  { name: "AWS", cat: "Infrastructure" },
-  { name: "DigitalOcean", cat: "Infrastructure" },
-  { name: "Razorpay", cat: "Payments" },
-  { name: "Stripe", cat: "Payments" },
-];
 
 /* ─── Page ──────────────────────────────────────────────────── */
 
@@ -599,53 +580,6 @@ export default function ServicesPage() {
             })}
           </div>
         </div>
-      </section>
-
-      {/* ── Tech Stack ── */}
-      <section className="section-container">
-        <div className="text-center mb-12">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gray-200 text-sm text-text-muted mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent-blue" />
-            Technologies
-          </span>
-          <h2 className="section-heading">
-            Built with the <span className="text-accent-blue">best stack</span>
-          </h2>
-          <p className="text-text-muted text-base leading-relaxed max-w-lg mx-auto">
-            We use modern, battle-tested technologies that deliver performance,
-            scalability, and long-term maintainability.
-          </p>
-        </div>
-
-        {/* Grouped tech badges */}
-        {[
-          { cat: "Frontend", color: "border-blue-200 text-blue-700 bg-blue-50" },
-          { cat: "Backend", color: "border-violet-200 text-violet-700 bg-violet-50" },
-          { cat: "Database", color: "border-emerald-200 text-emerald-700 bg-emerald-50" },
-          { cat: "Infrastructure", color: "border-sky-200 text-sky-700 bg-sky-50" },
-          { cat: "Payments", color: "border-amber-200 text-amber-700 bg-amber-50" },
-          { cat: "Mobile", color: "border-green-200 text-green-700 bg-green-50" },
-        ].map((group) => {
-          const items = techStack.filter((t) => t.cat === group.cat);
-          if (!items.length) return null;
-          return (
-            <div key={group.cat} className="mb-6">
-              <p className="text-xs font-semibold text-text-muted uppercase tracking-widest mb-3">
-                {group.cat}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {items.map((t) => (
-                  <span
-                    key={t.name}
-                    className={`px-4 py-2 rounded-xl border text-sm font-mono font-medium ${group.color}`}
-                  >
-                    {t.name}
-                  </span>
-                ))}
-              </div>
-            </div>
-          );
-        })}
       </section>
 
       {/* ── FAQ strip ── */}
