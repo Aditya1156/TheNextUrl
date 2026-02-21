@@ -16,12 +16,24 @@ export const metadata = {
   },
 };
 
+/* Per-project accent palette keyed by project id */
+const A = {
+  1: { color: "#2563eb", border: "#BFDBFE", light: "#f5f8ff" },
+  2: { color: "#7c3aed", border: "#DDD6FE", light: "#f8f5ff" },
+  3: { color: "#d97706", border: "#FDE68A", light: "#fffcf0" },
+  4: { color: "#e11d48", border: "#FECDD3", light: "#fff5f7" },
+  5: { color: "#059669", border: "#A7F3D0", light: "#f0fdf8" },
+  6: { color: "#0891b2", border: "#A5F3FC", light: "#f0fdff" },
+  7: { color: "#4338ca", border: "#C7D2FE", light: "#f5f3ff" },
+};
+
 export default function ProjectsPage() {
   const [featured, ...rest] = projects;
+  const fa = A[featured.id];
 
   return (
     <>
-      {/* ── Hero Banner ── */}
+      {/* ── Hero ── */}
       <div
         className="relative overflow-hidden pt-28 pb-20 sm:pt-36 sm:pb-28"
         style={{
@@ -48,174 +60,279 @@ export default function ProjectsPage() {
             {projects.length} projects delivered
           </span>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-white leading-tight mb-5">
-            Our finished<br />projects
+            Our finished<br className="hidden sm:block" />projects
           </h1>
-          <p className="text-white/50 text-lg max-w-xl mx-auto">
+          <p className="text-white/50 text-lg max-w-xl mx-auto mb-10">
             Real solutions built for real clients — from schools and restaurants
             to e-commerce stores and booking platforms.
           </p>
+
+          {/* Category pills */}
+          <div className="flex flex-wrap justify-center gap-2">
+            {["Web", "Mobile", "ERP", "E-Commerce", "Academic"].map((tag) => (
+              <span
+                key={tag}
+                className="text-xs font-medium px-3 py-1.5 rounded-full border border-white/15 text-white/50 bg-white/5"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
 
-      <section className="section-container space-y-8">
+      {/* ── Content ── */}
+      <section className="section-container space-y-6">
 
-        {/* ── Featured card (first project — full width) ── */}
-        <div className="group grid grid-cols-1 lg:grid-cols-2 rounded-2xl border border-gray-100 bg-white overflow-hidden hover:shadow-2xl hover:shadow-black/8 hover:border-gray-200 transition-all duration-500">
-
-          {/* Image */}
-          <div className={`relative h-64 sm:h-80 lg:h-full min-h-[320px] bg-gradient-to-br ${featured.gradient} overflow-hidden`}>
+        {/* ── Featured project (full-width two-panel) ── */}
+        <div
+          className="group grid grid-cols-1 lg:grid-cols-2 rounded-2xl overflow-hidden border hover:shadow-2xl hover:shadow-black/8 transition-all duration-500"
+          style={{ borderColor: fa.border }}
+        >
+          {/* Image panel */}
+          <div
+            className={`relative h-72 sm:h-80 lg:h-full min-h-[360px] bg-gradient-to-br ${featured.gradient} overflow-hidden`}
+          >
             <Image
               src={featured.images[0]}
               alt={featured.title}
               fill
-              className="object-contain p-6 transition-transform duration-700 group-hover:scale-105"
+              className="object-contain p-8 transition-transform duration-700 group-hover:scale-105"
               sizes="(max-width: 1024px) 100vw, 50vw"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-            {/* Number */}
-            <span className="absolute top-5 left-5 text-white/10 font-heading font-bold text-8xl leading-none select-none">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+
+            {/* Number watermark */}
+            <span
+              className="absolute top-6 left-6 font-heading font-bold leading-none select-none"
+              style={{ fontSize: "clamp(5rem, 10vw, 8rem)", color: "rgba(255,255,255,0.07)" }}
+            >
               01
             </span>
+
             {/* Categories */}
-            <div className="absolute bottom-5 left-5 flex gap-2">
+            <div className="absolute bottom-6 left-6 flex gap-2">
               {featured.categories.map((cat) => (
-                <span key={cat} className="text-xs text-white/80 bg-white/10 backdrop-blur-sm border border-white/20 px-3 py-1 rounded-full">
+                <span
+                  key={cat}
+                  className="text-xs text-white/80 bg-white/10 backdrop-blur-sm border border-white/20 px-3 py-1 rounded-full"
+                >
                   {cat}
                 </span>
               ))}
             </div>
           </div>
 
-          {/* Content */}
-          <div className="p-8 sm:p-10 flex flex-col justify-center">
-            <span className="text-xs font-semibold text-accent-blue tracking-wide uppercase mb-3">
-              {featured.client}
-            </span>
+          {/* Content panel */}
+          <div
+            className="p-8 sm:p-10 flex flex-col justify-center"
+            style={{ backgroundColor: fa.light }}
+          >
+            {/* Client + number badge */}
+            <div className="flex items-center gap-3 mb-5">
+              <span
+                className="text-[11px] font-bold tracking-widest uppercase"
+                style={{ color: fa.color }}
+              >
+                {featured.client}
+              </span>
+              <span
+                className="text-xs font-mono font-bold text-white px-2 py-0.5 rounded"
+                style={{ backgroundColor: fa.color }}
+              >
+                01
+              </span>
+            </div>
+
             <h2 className="font-heading font-bold text-text text-2xl sm:text-3xl mb-4 leading-tight">
               {featured.title}
             </h2>
             <p className="text-text-muted text-sm leading-relaxed mb-6">
               {featured.desc}
             </p>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 mb-6">
+
+            {/* Features */}
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-2.5 gap-x-4 mb-6">
               {featured.features.map((f) => (
                 <li key={f} className="flex items-start gap-2 text-sm text-text-muted">
-                  <CheckCircle2 size={14} className="text-accent-blue mt-0.5 flex-shrink-0" />
+                  <CheckCircle2
+                    size={14}
+                    className="mt-0.5 flex-shrink-0"
+                    style={{ color: fa.color }}
+                  />
                   {f}
                 </li>
               ))}
             </ul>
-            <div className="flex flex-wrap gap-2 pt-5 border-t border-gray-100">
+
+            {/* Tech */}
+            <div
+              className="flex flex-wrap gap-2 py-5 border-t border-b mb-5"
+              style={{ borderColor: fa.border }}
+            >
               {featured.tech.map((t) => (
-                <span key={t} className="text-xs text-text-muted bg-gray-50 border border-gray-200 px-2.5 py-1 rounded-lg font-mono">
+                <span
+                  key={t}
+                  className="text-xs font-mono px-2.5 py-1 rounded-lg border bg-white"
+                  style={{ color: fa.color, borderColor: fa.border }}
+                >
                   {t}
                 </span>
               ))}
             </div>
+
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 text-sm font-semibold transition-all duration-200 hover:gap-3"
+              style={{ color: fa.color }}
+            >
+              Get a similar build <ArrowRight size={14} />
+            </Link>
           </div>
         </div>
 
-        {/* ── Rest: 2-column grid ── */}
+        {/* ── Grid: remaining 6 projects ── */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {rest.map((project, i) => (
-            <div
-              key={project.id}
-              className="group rounded-2xl border border-gray-100 bg-white overflow-hidden hover:shadow-xl hover:shadow-black/6 hover:border-gray-200 transition-all duration-400 hover:-translate-y-1 flex flex-col"
-            >
-              {/* Image area */}
-              <div className={`relative h-52 sm:h-60 bg-gradient-to-br ${project.gradient} overflow-hidden flex-shrink-0`}>
-                <Image
-                  src={project.images[0]}
-                  alt={project.title}
-                  fill
-                  className="object-contain p-5 transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+          {rest.map((project, i) => {
+            const a = A[project.id];
+            return (
+              <div
+                key={project.id}
+                className="group rounded-2xl border overflow-hidden hover:shadow-xl hover:shadow-black/6 hover:-translate-y-1 transition-all duration-300 flex flex-col"
+                style={{ borderColor: a.border }}
+              >
+                {/* Accent top strip */}
+                <div className="h-[3px] flex-shrink-0" style={{ backgroundColor: a.color }} />
 
-                {/* Number watermark */}
-                <span
-                  className="absolute top-4 right-5 font-heading font-bold leading-none select-none"
-                  style={{ fontSize: "clamp(3rem, 6vw, 5rem)", color: "rgba(255,255,255,0.08)" }}
+                {/* Image */}
+                <div
+                  className={`relative h-56 sm:h-64 bg-gradient-to-br ${project.gradient} overflow-hidden flex-shrink-0`}
                 >
-                  {String(i + 2).padStart(2, "0")}
-                </span>
+                  <Image
+                    src={project.images[0]}
+                    alt={project.title}
+                    fill
+                    className="object-contain p-5 transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
 
-                {/* Categories */}
-                <div className="absolute bottom-4 left-4 flex gap-2">
-                  {project.categories.map((cat) => (
-                    <span key={cat} className="text-[11px] text-white/75 bg-white/10 backdrop-blur-sm border border-white/15 px-2.5 py-0.5 rounded-full">
-                      {cat}
-                    </span>
-                  ))}
+                  {/* Number watermark */}
+                  <span
+                    className="absolute top-4 left-5 font-heading font-bold leading-none select-none"
+                    style={{
+                      fontSize: "clamp(3.5rem, 7vw, 5.5rem)",
+                      color: "rgba(255,255,255,0.07)",
+                    }}
+                  >
+                    {String(i + 2).padStart(2, "0")}
+                  </span>
+
+                  {/* Arrow icon on hover */}
+                  <div
+                    className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100"
+                    style={{ backgroundColor: a.color }}
+                  >
+                    <ArrowUpRight size={14} className="text-white" />
+                  </div>
                 </div>
 
-                {/* Hover overlay arrow */}
-                <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/0 group-hover:bg-white/15 flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100">
-                  <ArrowUpRight size={14} className="text-white" />
+                {/* Content */}
+                <div
+                  className="p-6 flex flex-col flex-1"
+                  style={{ backgroundColor: a.light }}
+                >
+                  {/* Client + categories row */}
+                  <div className="flex items-center justify-between mb-3">
+                    <span
+                      className="text-[11px] font-bold tracking-widest uppercase"
+                      style={{ color: a.color }}
+                    >
+                      {project.client}
+                    </span>
+                    <div className="flex gap-1.5">
+                      {project.categories.map((cat) => (
+                        <span
+                          key={cat}
+                          className="text-[10px] font-medium px-2 py-0.5 rounded-full border"
+                          style={{ color: a.color, borderColor: a.border }}
+                        >
+                          {cat}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <h2 className="font-heading font-bold text-text text-xl mb-2.5 leading-tight">
+                    {project.title}
+                  </h2>
+                  <p className="text-text-muted text-sm leading-relaxed mb-5 flex-1">
+                    {project.desc}
+                  </p>
+
+                  {/* Features (2-col mini list) */}
+                  <ul className="grid grid-cols-2 gap-y-1.5 gap-x-3 mb-5">
+                    {project.features.map((f) => (
+                      <li key={f} className="flex items-start gap-1.5 text-xs text-text-muted">
+                        <CheckCircle2
+                          size={11}
+                          className="mt-0.5 flex-shrink-0"
+                          style={{ color: a.color }}
+                        />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Tech stack */}
+                  <div
+                    className="flex flex-wrap gap-1.5 pt-4 border-t"
+                    style={{ borderColor: a.border }}
+                  >
+                    {project.tech.map((t) => (
+                      <span
+                        key={t}
+                        className="text-[11px] font-mono px-2 py-0.5 rounded border bg-white"
+                        style={{ color: a.color, borderColor: a.border }}
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-
-              {/* Content */}
-              <div className="p-6 flex flex-col flex-1">
-                <span className="text-xs font-semibold text-accent-blue tracking-wide uppercase mb-2">
-                  {project.client}
-                </span>
-                <h2 className="font-heading font-bold text-text text-xl mb-2 leading-tight group-hover:text-accent-blue transition-colors duration-200">
-                  {project.title}
-                </h2>
-                <p className="text-text-muted text-sm leading-relaxed mb-4 flex-1">
-                  {project.desc}
-                </p>
-
-                {/* Features */}
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-1.5 gap-x-3 mb-4">
-                  {project.features.map((f) => (
-                    <li key={f} className="flex items-start gap-1.5 text-xs text-text-muted">
-                      <CheckCircle2 size={12} className="text-accent-blue mt-0.5 flex-shrink-0" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Tech stack */}
-                <div className="flex flex-wrap gap-1.5 pt-4 border-t border-gray-100">
-                  {project.tech.map((t) => (
-                    <span key={t} className="text-[11px] text-text-muted bg-gray-50 border border-gray-200 px-2 py-0.5 rounded font-mono">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
       {/* ── CTA ── */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
         <div
-          className="relative overflow-hidden rounded-2xl px-8 py-14 text-center"
+          className="relative overflow-hidden rounded-2xl px-8 py-16 text-center"
           style={{
-            background: "linear-gradient(135deg, #060f24 0%, #0b2348 50%, #0a3d3d 80%, #060f24 100%)",
+            background:
+              "linear-gradient(135deg, #060f24 0%, #0b2348 50%, #0a3d3d 80%, #060f24 100%)",
           }}
         >
           <div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[200px] rounded-full pointer-events-none"
-            style={{ background: "radial-gradient(ellipse, rgba(37,99,235,0.2) 0%, transparent 70%)" }}
+            style={{
+              background: "radial-gradient(ellipse, rgba(37,99,235,0.25) 0%, transparent 70%)",
+            }}
           />
           <div className="relative">
             <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/20 text-white/60 text-xs mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
               Ready to build?
             </span>
-            <h2 className="text-2xl sm:text-3xl font-heading font-bold text-white mb-3">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-bold text-white mb-3">
               Want something like this?
             </h2>
             <p className="text-white/50 text-sm mb-8 max-w-md mx-auto">
               Tell us about your project and we&apos;ll build the right solution
-              for your business or institution.
+              for your business or institution — with a transparent quote.
             </p>
             <div className="flex items-center justify-center gap-3 flex-wrap">
               <Link
