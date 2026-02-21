@@ -27,7 +27,6 @@ const WhoWeServe = dynamic(() => import("@/components/WhoWeServe"));
 const StatsShowcase = dynamic(() => import("@/components/StatsShowcase"));
 const Pricing = dynamic(() => import("@/components/Pricing"));
 const PriceCalculator = dynamic(() => import("@/components/PriceCalculator"));
-const Portfolio = dynamic(() => import("@/components/Portfolio"));
 const Testimonials = dynamic(() => import("@/components/Testimonials"));
 const CTA = dynamic(() => import("@/components/CTA"));
 
@@ -39,7 +38,6 @@ export default function Home() {
       <Problems />
       <Solutions />
       <Projects />
-      <Portfolio />
       <Services />
       <Pricing />
       <PriceCalculator />

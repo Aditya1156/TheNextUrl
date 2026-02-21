@@ -71,6 +71,18 @@ const projects = [
     features: ["Service provider listings", "Slot booking & calendar", "Real-time status tracking", "Ratings & reviews"],
     client: "Local Service Businesses",
   },
+  {
+    id: 7,
+    title: "College Projects",
+    categories: ["Academic", "Web"],
+    gradient: "from-indigo-900 to-indigo-700",
+    emoji: "🎓",
+    images: ["/Portfolio.png", "/Portfolio.png"],
+    desc: "Final year projects, research-based systems, AI/ML prototypes, and custom software built for students and academic institutions.",
+    tech: ["React", "Next.js", "Python", "Node.js"],
+    features: ["Final year project development", "AI/ML project prototypes", "Web & app development", "Research-based systems"],
+    client: "Students & Academic Institutions",
+  },
 ];
 
 export default projects;
