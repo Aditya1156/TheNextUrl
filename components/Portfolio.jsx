@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { ImageIcon, ExternalLink } from "lucide-react";
+import { ImageIcon } from "lucide-react";
 import { FadeUp } from "@/components/AnimateOnScroll";
 
 const portfolioItems = [
@@ -91,6 +92,26 @@ export default function Portfolio() {
             Photos uploading soon
           </span>
         </div>
+      </FadeUp>
+
+      {/* ── Featured banner image ── */}
+      <FadeUp className="mb-10">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.97 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          className="relative w-full rounded-2xl overflow-hidden border border-gray-100 shadow-sm"
+        >
+          <Image
+            src="/Portfolio.png"
+            alt="What We Build For You — Academic & College Projects and Business Solutions"
+            width={1200}
+            height={630}
+            className="w-full h-auto object-contain"
+            priority={false}
+          />
+        </motion.div>
       </FadeUp>
 
       {/* ── Grid ── */}
