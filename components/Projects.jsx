@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 import projects from "@/data/projects";
 import { FadeUp, StaggerContainer, staggerItem } from "@/components/AnimateOnScroll";
@@ -123,11 +124,12 @@ function DesktopProjects() {
                   <div className="w-10 h-0.5 bg-accent-blue rounded-full" />
                 </div>
 
-                {/* Right: gradient card */}
+                {/* Right: project images on gradient card */}
                 <div
                   className={`flex-1 rounded-2xl overflow-hidden relative bg-gradient-to-br ${project.gradient}`}
                   style={{ boxShadow: "0 25px 60px rgba(0,0,0,0.18)" }}
                 >
+                  {/* Dot grid texture */}
                   <div
                     className="absolute inset-0 opacity-[0.07]"
                     style={{
@@ -135,14 +137,48 @@ function DesktopProjects() {
                       backgroundSize: "36px 36px",
                     }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-br from-black/0 via-transparent to-black/25" />
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <span
-                      className="opacity-[0.15] select-none leading-none"
-                      style={{ fontSize: "clamp(120px, 18vw, 220px)" }}
+                  {/* Vignette */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-black/0 via-transparent to-black/30" />
+
+                  {/* Two floating screenshot cards */}
+                  <div className="absolute inset-0 flex items-center justify-center gap-5 px-8 py-10">
+                    {/* Image 1 — slightly left, tilted back */}
+                    <div
+                      className="relative rounded-xl overflow-hidden flex-shrink-0 border border-white/20"
+                      style={{
+                        width: "44%",
+                        aspectRatio: "4/3",
+                        transform: "rotate(-2.5deg) translateY(12px)",
+                        boxShadow: "0 20px 50px rgba(0,0,0,0.4)",
+                      }}
                     >
-                      {project.emoji}
-                    </span>
+                      <Image
+                        src={project.images[0]}
+                        alt={`${project.title} screenshot 1`}
+                        fill
+                        className="object-cover"
+                        sizes="20vw"
+                      />
+                    </div>
+
+                    {/* Image 2 — slightly right, tilted forward */}
+                    <div
+                      className="relative rounded-xl overflow-hidden flex-shrink-0 border border-white/20"
+                      style={{
+                        width: "44%",
+                        aspectRatio: "4/3",
+                        transform: "rotate(2deg) translateY(-12px)",
+                        boxShadow: "0 20px 50px rgba(0,0,0,0.4)",
+                      }}
+                    >
+                      <Image
+                        src={project.images[1]}
+                        alt={`${project.title} screenshot 2`}
+                        fill
+                        className="object-cover"
+                        sizes="20vw"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -185,22 +221,30 @@ function MobileProjects() {
             variants={staggerItem}
             className={`relative rounded-2xl overflow-hidden aspect-[4/3] bg-gradient-to-br ${project.gradient}`}
           >
-            {/* Dot grid */}
-            <div
-              className="absolute inset-0 opacity-[0.07]"
-              style={{
-                backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)",
-                backgroundSize: "32px 32px",
-              }}
+            {/* Real image as background */}
+            <Image
+              src={project.images[0]}
+              alt={project.title}
+              fill
+              className="object-cover"
+              sizes="100vw"
             />
-            {/* Vignette */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
 
-            {/* Emoji */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <span className="text-[22vw] opacity-[0.15] select-none leading-none">
-                {project.emoji}
-              </span>
+            {/* Vignette overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+
+            {/* Second image — small floating card bottom-right */}
+            <div
+              className="absolute bottom-14 right-3 w-[30%] aspect-[4/3] rounded-lg overflow-hidden border border-white/25"
+              style={{ boxShadow: "0 8px 24px rgba(0,0,0,0.45)" }}
+            >
+              <Image
+                src={project.images[1]}
+                alt={`${project.title} preview 2`}
+                fill
+                className="object-cover"
+                sizes="30vw"
+              />
             </div>
 
             {/* Info */}
