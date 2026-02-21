@@ -337,29 +337,7 @@ export default function PriceCalculator() {
                         : {}
                     }
                   >
-                    {/* Badge */}
-                    {service.popular && (
-                      <span
-                        className="absolute top-3 right-3 text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full text-white"
-                        style={{ backgroundColor: currentCategory.color }}
-                      >
-                        Popular
-                      </span>
-                    )}
-                    {service.tag && !service.popular && (
-                      <span
-                        className="absolute top-3 right-3 text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full border"
-                        style={{
-                          color: currentCategory.color,
-                          backgroundColor: currentCategory.light,
-                          borderColor: currentCategory.border,
-                        }}
-                      >
-                        {service.tag}
-                      </span>
-                    )}
-
-                    <div className="flex items-start gap-3 pr-20">
+                    <div className="flex items-start gap-3">
                       {/* Checkbox */}
                       <div
                         className="mt-0.5 w-5 h-5 rounded-md border-2 flex items-center justify-center shrink-0 transition-all duration-200"
@@ -390,7 +368,8 @@ export default function PriceCalculator() {
 
                       {/* Text */}
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-start justify-between gap-2">
+                        {/* Name + Price row — always on one line */}
+                        <div className="flex items-start justify-between gap-3">
                           <span className="text-sm font-semibold text-text leading-snug">
                             {service.name}
                           </span>
@@ -402,6 +381,31 @@ export default function PriceCalculator() {
                             {service.suffix || ""}
                           </span>
                         </div>
+                        {/* Badge — sits below name, above description */}
+                        {(service.popular || service.tag) && (
+                          <div className="mt-1.5 mb-1">
+                            {service.popular && (
+                              <span
+                                className="text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full text-white"
+                                style={{ backgroundColor: currentCategory.color }}
+                              >
+                                Popular
+                              </span>
+                            )}
+                            {service.tag && !service.popular && (
+                              <span
+                                className="text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full border"
+                                style={{
+                                  color: currentCategory.color,
+                                  backgroundColor: currentCategory.light,
+                                  borderColor: currentCategory.border,
+                                }}
+                              >
+                                {service.tag}
+                              </span>
+                            )}
+                          </div>
+                        )}
                         <p className="text-xs text-text-muted mt-1 leading-relaxed">{service.desc}</p>
                       </div>
                     </div>
