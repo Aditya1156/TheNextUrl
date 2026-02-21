@@ -159,6 +159,12 @@ const categories = [
         price: 49999,
         tag: "Best Value",
       },
+      {
+        id: "pwa",
+        name: "Progressive Web App (PWA)",
+        desc: "App-like web experience — installable, offline-ready, no app store needed",
+        price: 12999,
+      },
     ],
   },
   {
@@ -212,6 +218,12 @@ const categories = [
         name: "Admin Dashboard",
         desc: "Custom control panel with user management, reports, and exports",
         price: 12000,
+      },
+      {
+        id: "email",
+        name: "Business Email Setup",
+        desc: "Professional email like you@yourbrand.com via Google Workspace",
+        price: 1499,
       },
     ],
   },
