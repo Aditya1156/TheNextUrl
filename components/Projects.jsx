@@ -140,46 +140,14 @@ function DesktopProjects() {
                   {/* Vignette */}
                   <div className="absolute inset-0 bg-gradient-to-br from-black/0 via-transparent to-black/30" />
 
-                  {/* Two floating screenshot cards */}
-                  <div className="absolute inset-0 flex items-center justify-center gap-5 px-8 py-10">
-                    {/* Image 1 — slightly left, tilted back */}
-                    <div
-                      className="relative rounded-xl overflow-hidden flex-shrink-0 border border-white/20"
-                      style={{
-                        width: "44%",
-                        aspectRatio: "4/3",
-                        transform: "rotate(-2.5deg) translateY(12px)",
-                        boxShadow: "0 20px 50px rgba(0,0,0,0.4)",
-                      }}
-                    >
-                      <Image
-                        src={project.images[0]}
-                        alt={`${project.title} screenshot 1`}
-                        fill
-                        className="object-cover"
-                        sizes="20vw"
-                      />
-                    </div>
-
-                    {/* Image 2 — slightly right, tilted forward */}
-                    <div
-                      className="relative rounded-xl overflow-hidden flex-shrink-0 border border-white/20"
-                      style={{
-                        width: "44%",
-                        aspectRatio: "4/3",
-                        transform: "rotate(2deg) translateY(-12px)",
-                        boxShadow: "0 20px 50px rgba(0,0,0,0.4)",
-                      }}
-                    >
-                      <Image
-                        src={project.images[1]}
-                        alt={`${project.title} screenshot 2`}
-                        fill
-                        className="object-cover"
-                        sizes="20vw"
-                      />
-                    </div>
-                  </div>
+                  {/* Full image */}
+                  <Image
+                    src={project.images[0]}
+                    alt={project.title}
+                    fill
+                    className="object-cover"
+                    sizes="60vw"
+                  />
                 </div>
               </div>
             </div>
@@ -232,20 +200,6 @@ function MobileProjects() {
 
             {/* Vignette overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
-
-            {/* Second image — small floating card bottom-right */}
-            <div
-              className="absolute bottom-14 right-3 w-[30%] aspect-[4/3] rounded-lg overflow-hidden border border-white/25"
-              style={{ boxShadow: "0 8px 24px rgba(0,0,0,0.45)" }}
-            >
-              <Image
-                src={project.images[1]}
-                alt={`${project.title} preview 2`}
-                fill
-                className="object-cover"
-                sizes="30vw"
-              />
-            </div>
 
             {/* Info */}
             <div className="absolute bottom-0 left-0 right-0 px-5 pb-5">
