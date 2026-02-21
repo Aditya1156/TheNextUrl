@@ -1,6 +1,22 @@
 import dynamic from "next/dynamic";
 import Hero from "@/components/Hero";
 
+export const metadata = {
+  title: "The Next URL | Modern Websites & ERP Systems for Schools & Businesses",
+  description:
+    "The Next URL builds modern websites, school ERP systems, college management platforms, and custom digital solutions for institutions and businesses across India. Based in Shivamogga, Karnataka.",
+  alternates: {
+    canonical: "https://www.thenexturl.in",
+  },
+  openGraph: {
+    title: "The Next URL | Modern Websites & ERP Systems for Schools & Businesses",
+    description:
+      "We build modern websites, school ERPs, and custom digital platforms for institutions and businesses across India.",
+    url: "https://www.thenexturl.in",
+    type: "website",
+  },
+};
+
 const Problems = dynamic(() => import("@/components/Problems"));
 const Solutions = dynamic(() => import("@/components/Solutions"));
 const Projects = dynamic(() => import("@/components/Projects"));

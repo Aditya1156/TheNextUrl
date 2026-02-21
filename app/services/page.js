@@ -16,7 +16,16 @@ import Link from "next/link";
 export const metadata = {
   title: "Services | The Next URL",
   description:
-    "Explore the full range of digital services offered by The Next URL — from web design and ERP systems to SEO, cloud hosting, and ongoing support.",
+    "Full range of digital services by The Next URL — web design, school ERP systems, admin dashboards, SEO, cloud hosting, SSL, and ongoing website maintenance. Serving institutions across India.",
+  alternates: {
+    canonical: "https://www.thenexturl.in/services",
+  },
+  openGraph: {
+    title: "Services by The Next URL",
+    description:
+      "Web design, ERP systems, SEO, cloud hosting, and ongoing support for schools, businesses, and institutions.",
+    url: "https://www.thenexturl.in/services",
+  },
 };
 
 const services = [

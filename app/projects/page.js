@@ -5,7 +5,16 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 export const metadata = {
   title: "Projects | The Next URL",
   description:
-    "Explore all projects built by The Next URL — from restaurant POS systems and school ERPs to e-commerce platforms and service booking apps.",
+    "Explore all projects built by The Next URL — restaurant POS systems, school ERPs, e-commerce platforms, hotel booking sites, coaching portals, and service booking apps.",
+  alternates: {
+    canonical: "https://www.thenexturl.in/projects",
+  },
+  openGraph: {
+    title: "Projects by The Next URL",
+    description:
+      "See what we've built — from restaurant POS systems and school ERPs to e-commerce and service booking platforms.",
+    url: "https://www.thenexturl.in/projects",
+  },
 };
 
 export default function ProjectsPage() {

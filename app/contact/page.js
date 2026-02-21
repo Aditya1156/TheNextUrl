@@ -5,7 +5,15 @@ import { HiArrowLeft } from "react-icons/hi";
 export const metadata = {
   title: "Contact Us | The Next URL",
   description:
-    "Get in touch with The Next URL for your digital transformation needs. We build modern websites, ERP systems, and managed infrastructure.",
+    "Get in touch with The Next URL. We build modern websites, school ERP systems, and digital platforms for institutions and businesses across India. Based in Shivamogga, Karnataka.",
+  alternates: {
+    canonical: "https://www.thenexturl.in/contact",
+  },
+  openGraph: {
+    title: "Contact The Next URL",
+    description: "Reach out to start your digital transformation project.",
+    url: "https://www.thenexturl.in/contact",
+  },
 };
 
 export default function ContactPage() {
