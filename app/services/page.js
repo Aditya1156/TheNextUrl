@@ -455,7 +455,9 @@ export default function ServicesPage() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {additionalServices.map((s) => {
+
+          {/* First 3 cards — fill the top row */}
+          {additionalServices.slice(0, 3).map((s) => {
             const { Icon } = s;
             return (
               <div
@@ -466,17 +468,12 @@ export default function ServicesPage() {
                   <Icon size={20} className={s.color} />
                 </div>
                 <div>
-                  <h3 className="font-heading font-semibold text-text text-lg mb-2">
-                    {s.title}
-                  </h3>
+                  <h3 className="font-heading font-semibold text-text text-lg mb-2">{s.title}</h3>
                   <p className="text-text-muted text-sm leading-relaxed mb-4">{s.desc}</p>
                   <ul className="flex flex-col gap-2">
                     {s.features.map((f) => (
                       <li key={f} className="flex items-start gap-2 text-sm text-text-muted">
-                        <CheckCircle2
-                          size={13}
-                          className="text-accent-blue mt-0.5 flex-shrink-0"
-                        />
+                        <CheckCircle2 size={13} className="text-accent-blue mt-0.5 flex-shrink-0" />
                         {f}
                       </li>
                     ))}
@@ -485,6 +482,38 @@ export default function ServicesPage() {
               </div>
             );
           })}
+
+          {/* Last 2 cards — centred wrapper spans full row on lg */}
+          <div className="sm:col-span-2 lg:col-span-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:w-2/3 lg:mx-auto">
+              {additionalServices.slice(3).map((s) => {
+                const { Icon } = s;
+                return (
+                  <div
+                    key={s.title}
+                    className="group p-7 rounded-2xl border border-gray-100 bg-white hover:shadow-xl hover:shadow-black/5 hover:border-gray-200 hover:-translate-y-1 transition-all duration-300 flex flex-col gap-5"
+                  >
+                    <div className={`w-11 h-11 rounded-xl flex items-center justify-center ${s.bg}`}>
+                      <Icon size={20} className={s.color} />
+                    </div>
+                    <div>
+                      <h3 className="font-heading font-semibold text-text text-lg mb-2">{s.title}</h3>
+                      <p className="text-text-muted text-sm leading-relaxed mb-4">{s.desc}</p>
+                      <ul className="flex flex-col gap-2">
+                        {s.features.map((f) => (
+                          <li key={f} className="flex items-start gap-2 text-sm text-text-muted">
+                            <CheckCircle2 size={13} className="text-accent-blue mt-0.5 flex-shrink-0" />
+                            {f}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
         </div>
       </section>
 
