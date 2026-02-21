@@ -203,32 +203,32 @@ const processSteps = [
     Icon: Lightbulb,
     title: "Discovery & Planning",
     desc: "We learn your goals, users, and requirements. You receive a detailed project scope, feature list, and delivery timeline before any work begins.",
-    cardBg: "bg-blue-50/60",
     iconWrap: "bg-blue-100 text-blue-600",
+    color: "#2563eb",
   },
   {
     number: "02",
     Icon: Code2,
     title: "Design & Prototype",
     desc: "Our designers create wireframes and high-fidelity mockups. You review and approve the design before a single line of code is written.",
-    cardBg: "bg-violet-50/60",
     iconWrap: "bg-violet-100 text-violet-600",
+    color: "#7c3aed",
   },
   {
     number: "03",
     Icon: Rocket,
     title: "Build & Test",
     desc: "We develop with modern tech, run thorough cross-device testing, and do a full pre-launch walkthrough with you before going live.",
-    cardBg: "bg-emerald-50/60",
     iconWrap: "bg-emerald-100 text-emerald-600",
+    color: "#059669",
   },
   {
     number: "04",
     Icon: Headphones,
     title: "Launch & Support",
     desc: "We deploy to production, set up analytics and monitoring, and provide hands-on training. 30-day post-launch support is always included.",
-    cardBg: "bg-amber-50/60",
     iconWrap: "bg-amber-100 text-amber-600",
+    color: "#d97706",
   },
 ];
 
@@ -518,23 +518,19 @@ export default function ServicesPage() {
       </section>
 
       {/* ── Our Process ── */}
-      <section
-        className="py-20 sm:py-28"
-        style={{
-          background:
-            "linear-gradient(135deg, #060f24 0%, #0b2348 50%, #0a3d3d 80%, #060f24 100%)",
-        }}
-      >
+      <section className="bg-gray-50 py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 text-white/60 text-sm mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+
+          {/* Header */}
+          <div className="mb-12">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gray-200 bg-white text-sm text-text-muted mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent-blue" />
               How we work
             </span>
-            <h2 className="text-3xl sm:text-4xl font-heading font-bold text-white mb-3">
-              Our process
+            <h2 className="section-heading">
+              Our <span className="text-accent-blue">process</span>
             </h2>
-            <p className="text-white/50 text-sm max-w-md mx-auto">
+            <p className="text-text-muted text-base leading-relaxed max-w-lg">
               A clear, transparent process from kickoff to launch — so you always
               know exactly what&apos;s happening and when.
             </p>
@@ -546,31 +542,58 @@ export default function ServicesPage() {
               return (
                 <div
                   key={step.number}
-                  className="relative p-7 rounded-2xl bg-white/5 border border-white/10"
+                  className="relative rounded-2xl border border-gray-100 bg-white overflow-hidden hover:shadow-lg hover:shadow-black/5 hover:-translate-y-0.5 transition-all duration-300"
                 >
-                  {/* Connector (desktop) */}
-                  {i < processSteps.length - 1 && (
-                    <div className="hidden lg:block absolute top-10 -right-3 w-6 h-px bg-white/15 z-10" />
-                  )}
+                  {/* Colored top accent strip */}
+                  <div className="h-[3px]" style={{ backgroundColor: step.color }} />
 
-                  {/* Big number watermark */}
-                  <span
-                    className="text-7xl font-heading font-bold select-none leading-none mb-3 block"
-                    style={{ color: "rgba(255,255,255,0.05)" }}
-                  >
-                    {step.number}
-                  </span>
+                  <div className="p-7">
+                    {/* Number badge + watermark row */}
+                    <div className="flex items-start justify-between mb-5">
+                      <span
+                        className="text-xs font-mono font-bold text-white px-2.5 py-1 rounded-lg"
+                        style={{ backgroundColor: step.color }}
+                      >
+                        {step.number}
+                      </span>
+                      <span
+                        className="font-heading font-bold text-6xl leading-none select-none -mt-2"
+                        style={{ color: step.color, opacity: 0.08 }}
+                      >
+                        {step.number}
+                      </span>
+                    </div>
 
-                  <div
-                    className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 ${step.iconWrap}`}
-                  >
-                    <Icon size={18} />
+                    {/* Icon */}
+                    <div
+                      className={`w-11 h-11 rounded-xl flex items-center justify-center mb-5 ${step.iconWrap}`}
+                    >
+                      <Icon size={20} />
+                    </div>
+
+                    <h3 className="font-heading font-semibold text-text text-base mb-2">
+                      {step.title}
+                    </h3>
+                    <p className="text-text-muted text-sm leading-relaxed">{step.desc}</p>
+
+                    {/* Bottom step indicator */}
+                    <div
+                      className="mt-5 pt-4 border-t border-gray-100 flex items-center gap-2"
+                    >
+                      <span className="text-xs text-text-muted">Step {step.number}</span>
+                      {i < processSteps.length - 1 && (
+                        <span className="text-xs text-text-muted/40">of {processSteps.length}</span>
+                      )}
+                      {i === processSteps.length - 1 && (
+                        <span
+                          className="text-xs font-medium"
+                          style={{ color: step.color }}
+                        >
+                          Final step
+                        </span>
+                      )}
+                    </div>
                   </div>
-
-                  <h3 className="font-heading font-semibold text-white text-base mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-white/45 text-sm leading-relaxed">{step.desc}</p>
                 </div>
               );
             })}
