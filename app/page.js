@@ -25,7 +25,6 @@ const WhyUs = dynamic(() => import("@/components/WhyUs"));
 const TechStack = dynamic(() => import("@/components/TechStack"));
 const WhoWeServe = dynamic(() => import("@/components/WhoWeServe"));
 const StatsShowcase = dynamic(() => import("@/components/StatsShowcase"));
-const Pricing = dynamic(() => import("@/components/Pricing"));
 const PriceCalculator = dynamic(() => import("@/components/PriceCalculator"));
 const Testimonials = dynamic(() => import("@/components/Testimonials"));
 const CTA = dynamic(() => import("@/components/CTA"));
@@ -39,7 +38,6 @@ export default function Home() {
       <Solutions />
       <Projects />
       <Services />
-      <Pricing />
       <PriceCalculator />
       <WhyUs />
       <TechStack />

@@ -13,7 +13,6 @@ const desktopLinks = [
   { label: "Home",     href: "/" },
   { label: "Services", href: "/services" },
   { label: "Projects", href: "/projects" },
-  { label: "Pricing",  href: "/#pricing" },
   { label: "Contact",  href: "/contact" },
 ];
 
@@ -31,9 +30,8 @@ const mobileMenuSections = [
     number: "02",
     label: "Work",
     links: [
-      { label: "All Projects",  href: "/projects" },
-      { label: "Pricing Plans", href: "/#pricing" },
-      { label: "Who We Serve",  href: "/#who-we-serve" },
+      { label: "All Projects", href: "/projects" },
+      { label: "Who We Serve", href: "/#who-we-serve" },
     ],
   },
   {
@@ -87,9 +85,16 @@ export default function Navbar() {
     const hash       = href.includes("#") ? "#" + href.split("#")[1] : null;
     const targetPath = href.split("#")[0] || "/";
     if (pathname === targetPath || (pathname === "/" && targetPath === "/")) {
-      hash
-        ? document.querySelector(hash)?.scrollIntoView({ behavior: "smooth" })
-        : window.scrollTo({ top: 0, behavior: "smooth" });
+      const lenis = window.__lenis;
+      if (hash) {
+        lenis
+          ? lenis.scrollTo(hash, { offset: -80, duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) })
+          : document.querySelector(hash)?.scrollIntoView({ behavior: "smooth" });
+      } else {
+        lenis
+          ? lenis.scrollTo(0, { duration: 1.0, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) })
+          : window.scrollTo({ top: 0, behavior: "smooth" });
+      }
     } else {
       router.push(hash ? targetPath + hash : targetPath);
     }
