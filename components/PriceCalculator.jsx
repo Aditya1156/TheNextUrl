@@ -272,7 +272,7 @@ export default function PriceCalculator() {
 
         {/* Category tabs */}
         <FadeUp>
-          <div className="flex gap-2 overflow-x-auto pb-3 mb-6">
+          <div className="max-w-4xl mx-auto flex gap-2 overflow-x-auto pb-3 mb-6">
             {categories.map((cat) => {
               const { Icon } = cat;
               const isActive    = activeCat === cat.id;
