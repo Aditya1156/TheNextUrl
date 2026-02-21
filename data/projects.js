@@ -5,6 +5,10 @@ const projects = [
     categories: ["Mobile", "Web"],
     gradient: "from-blue-900 to-blue-700",
     emoji: "🍽️",
+    desc: "A full-featured point-of-sale system for restaurants — table management, order tracking, billing, and kitchen display, all in one platform.",
+    tech: ["React", "Node.js", "PostgreSQL", "Tailwind CSS"],
+    features: ["Table & order management", "Real-time kitchen display", "Billing & invoice generation", "Daily sales reports"],
+    client: "Restaurant & Food Business",
   },
   {
     id: 2,
@@ -12,6 +16,10 @@ const projects = [
     categories: ["Web"],
     gradient: "from-purple-900 to-purple-700",
     emoji: "🏫",
+    desc: "An end-to-end ERP for schools covering admissions, attendance, grade management, fee collection, and parent communication portals.",
+    tech: ["Next.js", "MongoDB", "Express", "Tailwind CSS"],
+    features: ["Student & staff portals", "Attendance tracking", "Fee & payroll management", "Parent notification system"],
+    client: "Schools & Educational Institutions",
   },
   {
     id: 3,
@@ -19,6 +27,10 @@ const projects = [
     categories: ["Mobile", "Web"],
     gradient: "from-amber-800 to-amber-600",
     emoji: "🛒",
+    desc: "A scalable e-commerce platform with product catalog, cart, checkout, payment gateway integration, and a seller admin dashboard.",
+    tech: ["Next.js", "Stripe", "MongoDB", "Tailwind CSS"],
+    features: ["Product catalog & search", "Razorpay / Stripe checkout", "Seller dashboard", "Order tracking & history"],
+    client: "Retail & D2C Brands",
   },
   {
     id: 4,
@@ -26,6 +38,10 @@ const projects = [
     categories: ["Web"],
     gradient: "from-rose-900 to-rose-700",
     emoji: "🏨",
+    desc: "A modern hotel booking website with room availability, dynamic pricing, online reservations, and an admin panel for property management.",
+    tech: ["React", "Node.js", "MySQL", "Tailwind CSS"],
+    features: ["Room availability calendar", "Online booking & payment", "Admin room management", "Guest review system"],
+    client: "Hospitality & Travel",
   },
   {
     id: 5,
@@ -33,6 +49,10 @@ const projects = [
     categories: ["Web"],
     gradient: "from-emerald-900 to-emerald-700",
     emoji: "📚",
+    desc: "A dedicated portal for coaching institutes with batch management, online test modules, result tracking, and student progress reports.",
+    tech: ["Next.js", "PostgreSQL", "Tailwind CSS", "Framer Motion"],
+    features: ["Batch & schedule management", "Online tests & quizzes", "Result & rank tracking", "Student progress dashboard"],
+    client: "Coaching Centres & Academies",
   },
   {
     id: 6,
@@ -40,6 +60,10 @@ const projects = [
     categories: ["Mobile", "Web"],
     gradient: "from-cyan-800 to-cyan-600",
     emoji: "📅",
+    desc: "An on-demand service booking platform connecting customers with local service providers — appointments, real-time tracking, and ratings.",
+    tech: ["React Native", "Node.js", "Firebase", "Tailwind CSS"],
+    features: ["Service provider listings", "Slot booking & calendar", "Real-time status tracking", "Ratings & reviews"],
+    client: "Local Service Businesses",
   },
 ];
 
