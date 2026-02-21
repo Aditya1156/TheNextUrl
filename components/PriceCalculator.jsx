@@ -270,46 +270,46 @@ export default function PriceCalculator() {
           </div>
         </FadeUp>
 
-        {/* Category tabs */}
-        <FadeUp>
-          <div className="max-w-4xl mx-auto flex gap-2 overflow-x-auto pb-3 mb-6">
-            {categories.map((cat) => {
-              const { Icon } = cat;
-              const isActive    = activeCat === cat.id;
-              const catSelected = cat.services.filter((s) => selected.includes(s.id)).length;
-              return (
-                <button
-                  key={cat.id}
-                  onClick={() => setActiveCat(cat.id)}
-                  className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all duration-200 shrink-0 border ${
-                    isActive
-                      ? "text-white shadow-md border-transparent"
-                      : "bg-white border-gray-200 text-text-muted hover:border-gray-300 hover:text-text"
-                  }`}
-                  style={isActive ? { backgroundColor: cat.color } : {}}
-                >
-                  <Icon size={15} />
-                  {cat.label}
-                  {catSelected > 0 && (
-                    <span
-                      className="w-5 h-5 rounded-full text-[10px] font-bold flex items-center justify-center"
-                      style={
-                        isActive
-                          ? { backgroundColor: "rgba(255,255,255,0.25)", color: "#fff" }
-                          : { backgroundColor: cat.color, color: "#fff" }
-                      }
-                    >
-                      {catSelected}
-                    </span>
-                  )}
-                </button>
-              );
-            })}
-          </div>
-        </FadeUp>
-
-        {/* Services grid */}
+        {/* Services grid + tabs share one container */}
         <div className="max-w-4xl mx-auto">
+
+          {/* Category tabs */}
+          <FadeUp>
+            <div className="flex gap-2 overflow-x-auto pb-3 mb-6">
+              {categories.map((cat) => {
+                const { Icon } = cat;
+                const isActive    = activeCat === cat.id;
+                const catSelected = cat.services.filter((s) => selected.includes(s.id)).length;
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => setActiveCat(cat.id)}
+                    className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all duration-200 shrink-0 border ${
+                      isActive
+                        ? "text-white shadow-md border-transparent"
+                        : "bg-white border-gray-200 text-text-muted hover:border-gray-300 hover:text-text"
+                    }`}
+                    style={isActive ? { backgroundColor: cat.color } : {}}
+                  >
+                    <Icon size={15} />
+                    {cat.label}
+                    {catSelected > 0 && (
+                      <span
+                        className="w-5 h-5 rounded-full text-[10px] font-bold flex items-center justify-center"
+                        style={
+                          isActive
+                            ? { backgroundColor: "rgba(255,255,255,0.25)", color: "#fff" }
+                            : { backgroundColor: cat.color, color: "#fff" }
+                        }
+                      >
+                        {catSelected}
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </FadeUp>
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCat}
