@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { HiMail, HiPhone, HiLocationMarker, HiBadgeCheck } from "react-icons/hi";
+import { HiMail, HiPhone, HiLocationMarker } from "react-icons/hi";
 
 const quickLinks = [
   { label: "Home", href: "/" },
@@ -80,73 +80,57 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* ── MSME Certification strip ── */}
-        <div className="mt-10 rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50/70 to-white overflow-hidden">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 p-5 sm:p-6">
+        {/* ── Divider ── */}
+        <div className="border-t border-gray-100 mt-10" />
 
-            {/* Certificate thumbnail */}
-            <div className="shrink-0 w-28 sm:w-32 rounded-xl overflow-hidden border border-blue-100 shadow-sm bg-white">
+        {/* ── MSME strip — minimalist ── */}
+        <div className="py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+
+          {/* Left: logo + verified label */}
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-lg overflow-hidden border border-gray-200 bg-white shrink-0 flex items-center justify-center p-0.5">
               <Image
                 src="/msme.png"
-                alt="MSME Udyam Registration Certificate"
-                width={128}
-                height={90}
-                className="w-full h-auto object-contain"
+                alt="MSME"
+                width={32}
+                height={32}
+                className="w-full h-full object-contain"
               />
             </div>
-
-            {/* Details */}
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                  <HiBadgeCheck className="text-green-600 text-base" />
-                  <span className="text-xs font-bold text-green-700 uppercase tracking-widest">
-                    MSME Registered Enterprise
-                  </span>
+            <div>
+              <div className="flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                <span className="text-[11px] font-semibold text-text tracking-wide uppercase">
+                  Govt. of India · MSME Registered
                 </span>
               </div>
-
-              <div className="flex flex-wrap gap-x-5 gap-y-1.5 text-xs text-text-muted mb-2">
-                <span>
-                  Udyam No:{" "}
-                  <span className="font-semibold text-text font-mono">UDYAM-BR-06-0060805</span>
-                </span>
-                <span>
-                  Enterprise:{" "}
-                  <span className="font-semibold text-text">THENEXTURL</span>
-                </span>
-                <span>
-                  Classification:{" "}
-                  <span className="font-semibold text-text">Micro (2025–26)</span>
-                </span>
-                <span>
-                  Activity:{" "}
-                  <span className="font-semibold text-text">Services · NIC 62013</span>
-                </span>
-                <span>
-                  Registered:{" "}
-                  <span className="font-semibold text-text">22 Feb 2026</span>
-                </span>
-              </div>
-
-              <p className="text-[11px] text-text-muted/60 leading-relaxed">
-                Ministry of Micro, Small &amp; Medium Enterprises, Government of India ·{" "}
-                <a
-                  href="https://udyamregistration.gov.in"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline underline-offset-2 hover:text-accent-blue transition-colors"
-                >
-                  udyamregistration.gov.in
-                </a>
+              <p className="text-[10px] text-text-muted/60 mt-0.5">
+                Ministry of Micro, Small &amp; Medium Enterprises
               </p>
             </div>
+          </div>
+
+          {/* Right: key details inline */}
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-text-muted">
+            <span className="font-mono text-text font-medium">UDYAM-BR-06-0060805</span>
+            <span className="text-gray-300 hidden sm:inline">|</span>
+            <span>Micro Enterprise · Services</span>
+            <span className="text-gray-300 hidden sm:inline">|</span>
+            <span>NIC 62013</span>
+            <span className="text-gray-300 hidden sm:inline">|</span>
+            <a
+              href="https://udyamregistration.gov.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-text-muted/50 hover:text-accent-blue transition-colors underline underline-offset-2"
+            >
+              Verify
+            </a>
           </div>
         </div>
 
         {/* ── Copyright ── */}
-        <div className="border-t border-gray-100 mt-6 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div className="border-t border-gray-100 pt-5 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-text-muted text-sm">
             &copy; {new Date().getFullYear()} The Next URL. All rights reserved.
           </p>
