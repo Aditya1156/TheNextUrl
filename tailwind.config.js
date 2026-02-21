@@ -25,12 +25,25 @@ module.exports = {
         heading: ["var(--font-syne)", "sans-serif"],
         body: ["var(--font-dm-sans)", "sans-serif"],
       },
+      maxWidth: {
+        container: "80rem",
+      },
       animation: {
         float: "float 3s ease-in-out infinite",
         "background-gradient":
           "background-gradient var(--background-gradient-speed, 15s) cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite",
+        "fade-in-up": "fade-in-up 0.5s ease-out forwards",
+        "scale-in": "scale-in 0.5s ease-out forwards",
       },
       keyframes: {
+        "fade-in-up": {
+          "0%": { opacity: "0", transform: "translateY(10px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "scale-in": {
+          "0%": { opacity: "0", transform: "scale(0.95)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
+        },
         float: {
           "0%, 100%": { transform: "translateY(0px)" },
           "50%": { transform: "translateY(-6px)" },

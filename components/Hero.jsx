@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { HiArrowRight } from "react-icons/hi";
+import { YellowGlowBackground } from "@/components/ui/background-components";
 
 const stats = [
   { value: "100%", label: "Custom Built" },
@@ -22,11 +23,7 @@ const fadeUp = {
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Subtle background gradient */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-accent-blue/5 blur-[150px] pointer-events-none" />
-      <div className="absolute top-[20%] right-[10%] w-[300px] h-[300px] rounded-full bg-accent-cyan/5 blur-[100px] pointer-events-none" />
-
+    <YellowGlowBackground className="flex items-center overflow-hidden" id="hero">
       <div className="section-container relative z-10 w-full">
         <div className="max-w-5xl mx-auto">
           <motion.h1
@@ -98,6 +95,6 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
-    </section>
+    </YellowGlowBackground>
   );
 }
