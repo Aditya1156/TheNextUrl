@@ -100,8 +100,12 @@ function DesktopProjects() {
                 {/* Left: info */}
                 <div className="w-[36%] flex flex-col justify-center">
                   <span
-                    className="font-heading font-bold text-gray-100 leading-none mb-1 select-none"
-                    style={{ fontSize: "clamp(5rem, 10vw, 9rem)" }}
+                    className="font-heading font-bold leading-none mb-1 select-none"
+                    style={{
+                      fontSize: "clamp(5rem, 10vw, 9rem)",
+                      color: "#2563eb",
+                      opacity: 0.12,
+                    }}
                   >
                     {String(i + 1).padStart(2, "0")}
                   </span>
