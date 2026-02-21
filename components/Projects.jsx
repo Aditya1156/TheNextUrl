@@ -140,12 +140,12 @@ function DesktopProjects() {
                   {/* Vignette */}
                   <div className="absolute inset-0 bg-gradient-to-br from-black/0 via-transparent to-black/30" />
 
-                  {/* Full image */}
+                  {/* Full image — object-contain to show the whole image */}
                   <Image
                     src={project.images[0]}
                     alt={project.title}
                     fill
-                    className="object-cover"
+                    className="object-contain p-4"
                     sizes="60vw"
                   />
                 </div>
@@ -189,12 +189,12 @@ function MobileProjects() {
             variants={staggerItem}
             className={`relative rounded-2xl overflow-hidden aspect-[4/3] bg-gradient-to-br ${project.gradient}`}
           >
-            {/* Real image as background */}
+            {/* Real image — full fit */}
             <Image
               src={project.images[0]}
               alt={project.title}
               fill
-              className="object-cover"
+              className="object-contain p-3"
               sizes="100vw"
             />
 
